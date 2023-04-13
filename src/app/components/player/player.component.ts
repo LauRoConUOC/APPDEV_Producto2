@@ -1,22 +1,34 @@
-import { Component, Input } from '@angular/core';
-import { ACTORES } from 'src/app/models/info-actor';
+import { Component, Input, OnInit } from '@angular/core';
 import { Actor } from 'src/app/models/actor';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss']
 })
-export class PlayerComponent {
-  actores: Actor[] = ACTORES;
-  
+export class PlayerComponent implements OnInit {
+  @Input() actorClicado: number = -1;
+  @Input() actores: Actor[] = [];
 
-  @Input( ) actorClicado: number = -1;
+  constructor(private firestore: AngularFirestore) {}
 
-  valor: number = this.actorClicado;
-  
-
-
-
-
+  ngOnInit() {
+    this.firestore
+      .collection<Actor>('actors')
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data() as Actor;
+            const key = a.payload.doc.id;
+            return { key, ...data };
+          })
+        )
+      )
+      .subscribe((data) => {
+        this.actores = data;
+      });
+  }
 }

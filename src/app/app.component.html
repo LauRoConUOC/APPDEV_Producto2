@@ -22,6 +22,10 @@
           <option value="">Todos</option>
           <option value="Estados Unidos">Estados Unidos</option>
           <option value="Reino Unido">Reino Unido</option>
+          <option value="España">España</option>
+          <option value="Australia">Australia</option>
+          <option value="Guyana">Guyana</option>
+          <option value="Nueva Zelanda">Nueva Zelanda</option>
         </select>
     </div>
   </header>
@@ -29,11 +33,11 @@
 <div class="content" role="main">
     <div class="columnas">
       <div class="left-side">
-        <app-actors (actorClicado)="recibirActorClicado($event)"[nombre]="nombre" [pais]="pais" [masculino]="masculino" [femenino]="femenino"> </app-actors>
+        <app-actors (actorClicado)="recibirActorClicado($event)" [nombre]="nombre" [pais]="pais" [masculino]="masculino" [femenino]="femenino" [actores]="actores"> </app-actors>
       </div>
       <div class="columna-segunda"> 
-        <app-player [actorClicado]="actorClicado"> </app-player>
-        <app-detail [actorClicado]="actorClicado">  </app-detail>
+        <app-player [actorClicado]="actorClicado" [actores]="actores"> </app-player>
+        <app-detail [actorClicado]="actorClicado" [actores]="actores">  </app-detail>
       </div>
   </div>
 </div>
@@ -43,21 +47,3 @@
   <p><strong>APPDEV</strong></p>
 </a>
 </footer>
-
-
-
-    
-
-    <!--
-    <div class="right-side">
-    <app-player></app-player>
-    <app-detail></app-detail>
-    </div>
-    -->
-  
-
-    
-  
-  
-
-<!-- Div class video-card y class actor-info-card van en un mismo DIV contenedor "right-side" -->

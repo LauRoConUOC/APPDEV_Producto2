@@ -1,10 +1,6 @@
-import { Component} from '@angular/core';
-import { ACTORES } from './models/info-actor';
+import { Component } from '@angular/core';
 import { Actor } from './models/actor';
-import { FiltroGenero } from './pipes/filterGenero.pipe';
-import { FiltroPais } from './pipes/filtertPais.pipe';
-import { NgModule } from '@angular/core';
-
+import { FirestoreService } from './services/firestore.service';
 
 @Component({
   selector: 'app-root',
@@ -16,20 +12,34 @@ export class AppComponent {
 
   actorClicado = -1;
   nombre: string = "";
-  actores: Actor[] = ACTORES;
+  actores: Actor[] = [];
 
   pais: string = ""; 
 
-  
-  
   masculino: boolean = false;
   femenino: boolean = false;
 
+  constructor(private firestoreService: FirestoreService) {
+    this.getActorsFromFirestore();
+  }
 
   recibirActorClicado(evento: number){
     this.actorClicado=evento;
   }
 
+  getActorsFromFirestore() {
+    this.firestoreService.getDocuments('actors').subscribe((actorsData) => {
+      this.actores = actorsData.map((actorData) => {
+        const actor: Actor = {
+          nombre: actorData.nombre,
+          genero: actorData.genero,
+          nacionalidad: actorData.nacionalidad,
+          edad: actorData.edad,
+          descripcion: actorData.descripcion,
+          video: actorData.video,
+        };
+        return actor;
+      });
+    });
+  }
 }
-
-
