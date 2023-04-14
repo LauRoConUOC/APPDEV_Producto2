@@ -10,6 +10,10 @@ import { FiltroPais } from './pipes/filtertPais.pipe';
 import { FiltroGenero } from './pipes/filterGenero.pipe';
 import { FilternombrePipe } from './pipes/filternombre.pipe';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+import { environment } from '../environments/environment';
 
 const firebaseConfig = environment.firebase;
 
@@ -25,13 +29,9 @@ const firebaseConfig = environment.firebase;
   ],
   imports: [
     BrowserModule,
-<<<<<<< HEAD
     FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
-=======
-    FormsModule
->>>>>>> parent of 7130e80 (Primeros pasos con actors)
   ],
   providers: [],
   bootstrap: [AppComponent]

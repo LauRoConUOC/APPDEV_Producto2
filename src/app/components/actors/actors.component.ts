@@ -8,7 +8,7 @@ import { FirestoreService } from '../../services/firestore.service';
   styleUrls: ['./actors.component.scss'],
 })
 export class ActorsComponent implements OnInit {
-  actores: Actor[] = [];
+  @Input()actores: Actor[] = [];
   @Input() nombre: string = '';
   @Input() masculino: boolean = false;
   @Input() femenino: boolean = false;

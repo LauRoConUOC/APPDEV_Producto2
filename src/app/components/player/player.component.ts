@@ -15,8 +15,4 @@ export class PlayerComponent {
 
   valor: number = this.actorClicado;
   
-
-
-
-
 }
