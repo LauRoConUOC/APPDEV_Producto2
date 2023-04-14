@@ -6,7 +6,7 @@
     
     <ng-template [ngIf]="actorClicado"> <div> 
     <div class="video-card">
-        <h2 class="titulo-actor"> Video del actor {{actorClicado?.nombre}} </h2>
+        
     
         <div class="video-wrapper">
             <video *ngIf="actorClicado" [src]="actorClicado.video" controls autoplay loop></video>
