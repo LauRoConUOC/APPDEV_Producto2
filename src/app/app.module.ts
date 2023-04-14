@@ -15,6 +15,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { environment } from '../environments/environment';
 
+const firebaseConfig = environment.firebase;
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
   ],
   providers: [],

@@ -1,10 +1,7 @@
-import { Component} from '@angular/core';
-import { ACTORES } from './models/info-actor';
+import { Component } from '@angular/core';
 import { Actor } from './models/actor';
-import { FiltroGenero } from './pipes/filterGenero.pipe';
-import { FiltroPais } from './pipes/filtertPais.pipe';
-import { NgModule } from '@angular/core';
-
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -16,20 +13,26 @@ export class AppComponent {
 
   actorClicado = -1;
   nombre: string = "";
-  actores: Actor[] = ACTORES;
+  actores: Actor[] = [];
+  actoresRef: AngularFireList<any>;
 
-  pais: string = ""; 
+  pais: string = "";
 
-  
-  
   masculino: boolean = false;
   femenino: boolean = false;
 
-
-  recibirActorClicado(evento: number){
-    this.actorClicado=evento;
+  constructor(private db: AngularFireDatabase) {
+    this.actoresRef = db.list('actors'); // Cambiado a 'actors'
+    this.actoresRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+      )
+    ).subscribe(data => {
+      this.actores = data;
+    });
   }
 
+  recibirActorClicado(evento: number) {
+    this.actorClicado = evento;
+  }
 }
-
-
