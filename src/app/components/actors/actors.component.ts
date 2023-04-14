@@ -1,28 +1,30 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Actor } from 'src/app/models/actor';
+import { Component } from '@angular/core';
+import { Actor } from '../../models/actor';
 import { FirestoreService } from '../../services/firestore.service';
 
 @Component({
-  selector: 'app-actors',
-  templateUrl: './actors.component.html',
-  styleUrls: ['./actors.component.scss'],
+  selector: 'app-root',
+  templateUrl: '../../app.component.html',
+  styleUrls: ['../../app.component.scss']
 })
-export class ActorsComponent implements OnInit {
+export class AppComponent {
+  title = 'producto1';
+
+  actorClicado: Actor | null = null;
+  nombre: string = "";
   actores: Actor[] = [];
-  @Input() nombre: string = '';
-  @Input() masculino: boolean = false;
-  @Input() femenino: boolean = false;
-  @Input() pais: string = '';
-  @Output() actorClicado: EventEmitter<Actor> = new EventEmitter();
 
-  constructor(private firestoreService: FirestoreService) {}
+  pais: string = ""; 
 
-  ngOnInit() {
+  masculino: boolean = false;
+  femenino: boolean = false;
+
+  constructor(private firestoreService: FirestoreService) {
     this.getActorsFromFirestore();
   }
 
-  enviarActorClicado(index: number): void {
-    this.actorClicado.emit(this.actores[index]);
+  recibirActorClicado(evento: Actor){
+    this.actorClicado = evento;
   }
 
   getActorsFromFirestore() {
