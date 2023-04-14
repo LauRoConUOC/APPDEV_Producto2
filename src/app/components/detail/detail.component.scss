@@ -1,15 +1,23 @@
+
 .detail {
+    display: flex;
+    justify-content: center;
+    align-content: center;
     padding: 10px;
     opacity: 0.8;
     background-color: rgba(245, 245, 245, 0.6);
+    border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
     margin-right: 10%;
     margin-top: 10px;
-    border-radius: 15px;
     width: 640px;
     margin-bottom: 10em;
 }
-
+.foto-actor img{
+    margin-top: 1.5em;
+    width: 13em;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.639));
+}
 @media (max-width: 657px) and (min-width: 559px) {
     .detail {
         width: 500px;

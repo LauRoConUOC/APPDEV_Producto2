@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Actor } from './models/actor';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -11,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class AppComponent {
   title = 'producto1';
 
-  actorClicado = -1;
+  actorClicado: Actor | null = null;
   nombre: string = "";
   actores: Actor[] = [];
   actoresRef: AngularFireList<any>;
@@ -22,7 +23,7 @@ export class AppComponent {
   femenino: boolean = false;
 
   constructor(private db: AngularFireDatabase) {
-    this.actoresRef = db.list('actors'); // Cambiado a 'actors'
+    this.actoresRef = db.list('actors'); 
     this.actoresRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
@@ -32,7 +33,7 @@ export class AppComponent {
     });
   }
 
-  recibirActorClicado(evento: number) {
-    this.actorClicado = evento;
+  recibirActorClicado(actor: Actor): void {
+    this.actorClicado = actor;
   }
 }

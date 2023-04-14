@@ -8,8 +8,8 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  actores: Actor[] = [];
-  @Input() actorClicado: number = -1;
+  @Input() actores: Actor[] = [];
+  @Input() actor: Actor | null = null;
 
   constructor(private firestoreService: FirestoreService) {}
 

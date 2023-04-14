@@ -1,12 +1,31 @@
-
-<ng-template [ngIf]="actorClicado > -1"> <div> 
-    
-
+<ng-template [ngIf]="actor">
+  <div>
     <div class="detail">
-        <div class="nombre-actor" > <strong> Nombre: </strong>  {{actores[actorClicado].nombre}} </div>
-        <div class="nacionalidad-actor"> <strong> Nacionalidad: </strong> {{actores[actorClicado].nacionalidad}} </div>
-        <div class="edad-actor"> <strong> Edad: </strong> {{actores[actorClicado].edad}} </div>
-        <div class="descripcion-actor"> <strong> Descripción: </strong> {{actores[actorClicado].descripcion}} </div>
+
+      <div class="bloquea">
+        <div class="foto-actor">
+          <img [src]="actor.foto" alt="{{actor.nombre}}">
+        </div>
+      </div>
+      <div class="bloqueb">
+        <div class="nombre-actor">
+          <strong> Nombre: </strong> {{actor.nombre}}
+        </div>
+        <div class="nacionalidad-actor">
+          <strong> Nacionalidad: </strong> {{actor.nacionalidad}}
+        </div>
+        <div class="edad-actor">
+          <strong> Edad: </strong> {{actor.edad}}
+        </div>
+        <div class="descripcion-actor">
+          <strong> Descripción: </strong> {{actor.descripcion}}
+        </div>
+        <div class="descripcion-actor">
+          <strong> Años en activo: </strong> {{actor.activo}}
+        </div>
+      </div>
+      
+      
     </div>
-    
-    </div>
+  </div>
+</ng-template>
