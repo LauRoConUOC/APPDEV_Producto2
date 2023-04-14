@@ -5,6 +5,8 @@ export interface Actor {
     edad: number;
     nacionalidad: string;
     descripcion: string;
+    activo: string;
     video: string; 
+    foto: string;
 }  
 

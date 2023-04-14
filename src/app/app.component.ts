@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class AppComponent {
   title = 'producto1';
 
-  actorClicado = -1;
+  actorClicado: Actor | null = null;
   nombre: string = "";
   actores: Actor[] = [];
   actoresRef: AngularFireList<any>;
@@ -33,7 +33,7 @@ export class AppComponent {
     });
   }
 
-  recibirActorClicado(evento: number) {
-    this.actorClicado = evento;
+  recibirActorClicado(actor: Actor): void {
+    this.actorClicado = actor;
   }
 }

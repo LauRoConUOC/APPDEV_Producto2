@@ -13,7 +13,7 @@ export class ActorsComponent implements OnInit {
   @Input() masculino: boolean = false;
   @Input() femenino: boolean = false;
   @Input() pais: string = '';
-  @Output() actorClicado: EventEmitter<number> = new EventEmitter();
+  @Output() actorClicado: EventEmitter<Actor> = new EventEmitter<Actor>();
 
   constructor(private firestoreService: FirestoreService) {}
 
@@ -21,8 +21,8 @@ export class ActorsComponent implements OnInit {
     this.getActorsFromFirestore();
   }
 
-  enviarActorClicado(valor: number): void {
-    this.actorClicado.emit(valor);
+  enviarActorClicado(actor: Actor): void {
+    this.actorClicado.emit(actor);
   }
 
   getActorsFromFirestore() {
@@ -34,7 +34,9 @@ export class ActorsComponent implements OnInit {
           nacionalidad: actorData.nacionalidad,
           edad: actorData.edad,
           descripcion: actorData.descripcion,
+          activo:actorData.activo,
           video: actorData.video,
+          foto: actorData.foto
         };
         return actor;
       });

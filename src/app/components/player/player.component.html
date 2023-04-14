@@ -1,17 +1,17 @@
-
-<ng-template [ngIf]="actorClicado == -1">
-<div class="imagen-nesflis">
-    <img  id="imagen" src="../../../assets/nesflis.png" > 
-</div></ng-template>
-
-
-<ng-template [ngIf]="actorClicado>-1"> <div> 
-<div class="video-card">
-        <h2 class="titulo-actor"> Video del actor {{actores[actorClicado].nombre}} </h2>
-    <div class="video-wrapper">
-        <video [src]="actores[actorClicado].video" controls autoplay loop></video>  
-    </div> 
-</div>
-
-</div> </ng-template>
-
+<ng-template [ngIf]="!actorClicado">
+    <div class="imagen-nesflis">
+        <img  id="imagen" src="../../../assets/nesflis.png" > 
+    </div></ng-template>
+    
+    
+    <ng-template [ngIf]="actorClicado"> <div> 
+    <div class="video-card">
+        <h2 class="titulo-actor"> Video del actor {{actorClicado?.nombre}} </h2>
+    
+        <div class="video-wrapper">
+            <video *ngIf="actorClicado" [src]="actorClicado.video" controls autoplay loop></video>
+        </div> 
+    </div>
+    
+    </div> </ng-template>
+    

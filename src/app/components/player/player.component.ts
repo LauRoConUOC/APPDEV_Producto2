@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ACTORES } from 'src/app/models/info-actor';
 import { Actor } from 'src/app/models/actor';
 
 @Component({
@@ -8,11 +7,9 @@ import { Actor } from 'src/app/models/actor';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent {
-  actores: Actor[] = ACTORES;
+  @Input() actores: Actor[] = Array(10).fill({nombre: '', genero: '', nacionalidad: '', edad: 0, descripcion: '', video: ''});
+
+  @Input() actorClicado: any;
   
-
-  @Input( ) actorClicado: number = -1;
-
-  valor: number = this.actorClicado;
   
 }
