@@ -1,8 +1,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Component } from '@angular/core';
 import { Actor } from '../../models/actor';
+=======
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Actor } from 'src/app/models/actor';
+>>>>>>> parent of f9cf995 (Update actors.component.ts)
 =======
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Actor } from 'src/app/models/actor';
@@ -34,6 +39,7 @@ export class ActorsComponent implements OnInit {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   recibirActorClicado(evento: Actor){
     this.actorClicado = evento;
 =======
@@ -59,6 +65,10 @@ export class ActorsComponent  {
   enviarActorClicado(valor: number): void {
     this.actorClicado.emit(valor);
 >>>>>>> parent of 7130e80 (Primeros pasos con actors)
+=======
+  enviarActorClicado(index: number): void {
+    this.actorClicado.emit(this.actores[index]);
+>>>>>>> parent of f9cf995 (Update actors.component.ts)
 =======
   enviarActorClicado(index: number): void {
     this.actorClicado.emit(this.actores[index]);
