@@ -11,8 +11,6 @@ import { FiltroGenero } from './pipes/filterGenero.pipe';
 import { FilternombrePipe } from './pipes/filternombre.pipe';
 
 
-const firebaseConfig = environment.firebase;
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +25,7 @@ const firebaseConfig = environment.firebase;
     BrowserModule,
 <<<<<<< HEAD
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
 =======
     FormsModule
