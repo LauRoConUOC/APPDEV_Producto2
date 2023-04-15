@@ -13,6 +13,7 @@ import { FilternombrePipe } from './pipes/filternombre.pipe';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
+
 import { environment } from '../environments/environment';
 
 const firebaseConfig = environment.firebase;
