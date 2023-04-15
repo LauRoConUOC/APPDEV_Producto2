@@ -22,7 +22,18 @@
 .detail {
     margin: 2em 0 10em 0;
 }
+.video-wrapper {
+    position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; 
+  overflow: hidden;
+  }
 
+.video-actor {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 @media (min-width: 1001px) and (max-width: 1244px) {
     .imagen-nesflis img {
         width: 800px;

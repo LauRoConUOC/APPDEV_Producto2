@@ -77,6 +77,18 @@ i:hover {
     color: rgb(35, 153, 53);
 }
 
+.subirbutton{
+    margin: 1em;
+    padding: 0 1em;
+    border-radius: 0.7em;
+    border:none;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
+}
+.subirbutton:hover{
+    background-color: rgba(255, 0, 0, 0.626);
+    color: #ffff;
+    cursor:pointer;
+}
 
 @media (max-width: 657px) and (min-width: 559px) {
     .detail {

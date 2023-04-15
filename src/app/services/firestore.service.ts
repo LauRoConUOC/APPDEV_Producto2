@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { Actor } from '../models/actor';
 
 
 @Injectable({
@@ -24,5 +25,8 @@ export class FirestoreService {
   updateDocument(collection: string, documentId: string, data: any): Promise<void> {
     return this.firestore.collection(collection).doc(documentId).update(data);
   }
-  
+  //método PARA añadir un nuevo actor en la colección de actores
+  addActor(collectionName: string, actor: Actor): Promise<any> {
+    return this.firestore.collection(collectionName).add(actor);
+  }
 }

@@ -42,6 +42,10 @@
             <div class="activo-actor field">
               <strong> Años en activo: </strong> <input [(ngModel)]="actorEditado.activo" type="text" />
             </div>
+            <input  style="display: none;" type="file" id="foto" accept="image/*" (change)="uploadFile($event, 'foto')" #fotoInput>
+            <button class="subirbutton" (click)="selectFile(fotoInput)">Subir foto</button>
+            <input  style="display: none;" type="file" id="video" accept="video/*" (change)="uploadFile($event, 'video')" #videoInput>
+            <button class="subirbutton" button (click)="selectFile(videoInput)">Subir video</button>
             <i class="bi bi-check-square-fill aceptar" (click)="guardarCambios()"></i>
             <i class="bi-x-square-fill cancelar" (click)="cancelarEdicion()"></i>
           </ng-container>
