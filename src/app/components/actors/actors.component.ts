@@ -69,7 +69,19 @@ export class ActorsComponent implements OnInit {
     }
   }
 
-  onNuevoActor(): void {
-    this.nuevoActor.emit();
+  onNuevoActor() {
+    const nuevoActor: Actor = {
+      nombre: 'NUEVO ACTOR',
+      nacionalidad: '',
+      genero: '',
+      edad: 0,
+      descripcion: '',
+      activo: '',
+      video: '',
+      foto: ''
+    };
+    this.firestoreService.addActor('actors', nuevoActor).then((docRef) => {
+      this.editarActor.emit(docRef.id);
+    });
   }
 }
