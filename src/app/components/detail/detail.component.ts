@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Actor } from 'src/app/models/actor';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -10,6 +10,10 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class DetailComponent implements OnInit {
   @Input() actores: Actor[] = [];
   @Input() actor: Actor | null = null;
+  @Output() actorActualizado: EventEmitter<Actor> = new EventEmitter<Actor>();
+
+  editando: boolean = false;
+  actorEditado: Actor | null = null;
 
   constructor(private firestoreService: FirestoreService) {}
 
@@ -17,5 +21,36 @@ export class DetailComponent implements OnInit {
     this.firestoreService.getDocuments('actors').subscribe((actors) => {
       this.actores = actors;
     });
+  }
+
+  activarEdicion(): void {
+    if (this.actor) {
+      this.actorEditado = { ...this.actor };
+      this.editando = true;
+    }
+  }
+
+  guardarCambios(): void {
+    if (this.actorEditado) {
+      if (this.actorEditado.id) {
+        this.firestoreService.updateDocument('actors', this.actorEditado.id, this.actorEditado).then(() => {
+          if (this.actor) {
+            Object.assign(this.actor, this.actorEditado);
+            this.actorActualizado.emit(this.actor);
+          }
+          this.editando = false;
+          this.actorEditado = null;
+        }).catch((error) => {
+          console.error("Error al actualizar el actor:", error);
+        });
+      } else {
+        console.error("No se puede actualizar el actor porque su ID no está definida.");
+      }
+    }
+  }
+
+  cancelarEdicion(): void {
+    this.editando = false;
+    this.actorEditado = null;
   }
 }

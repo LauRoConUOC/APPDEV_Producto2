@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,4 +13,16 @@ export class FirestoreService {
   getDocuments(collection: string): Observable<any[]> {
     return this.firestore.collection(collection).valueChanges({ idField: 'id' });
   }
+
+  // Método para eliminar un documento de una colección
+  deleteDocument(collection: string, documentId: string): Promise<void> {
+    return this.firestore.collection(collection).doc(documentId).delete();
+  }
+
+  
+  // Método para actualizar un documento en una colección
+  updateDocument(collection: string, documentId: string, data: any): Promise<void> {
+    return this.firestore.collection(collection).doc(documentId).update(data);
+  }
+  
 }
