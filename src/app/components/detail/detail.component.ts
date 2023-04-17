@@ -4,6 +4,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { ElementRef, Renderer2 } from '@angular/core';
+import { from } from 'rxjs';
 
 
 @Component({
