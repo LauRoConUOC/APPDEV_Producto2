@@ -12,7 +12,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'producto1';
+  title = 'producto2';
 
   actorClicado: Actor | null = null;
   nombre: string = "";
