@@ -4,6 +4,8 @@ import { Actor } from './models/actor';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { map } from 'rxjs/operators';
 
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
