@@ -3,6 +3,9 @@ import { Actor } from 'src/app/models/actor';
 import { FirestoreService } from '../../services/firestore.service';
 import { Router } from '@angular/router';
 
+// import { AngularFirestore } from '@angular/fire/firestore';
+
+
 @Component({
   selector: 'app-actors',
   templateUrl: './actors.component.html',
@@ -18,6 +21,9 @@ export class ActorsComponent implements OnInit {
   @Output() actorClicado: EventEmitter<Actor> = new EventEmitter<Actor>();
   @Output() editarActor: EventEmitter<Actor> = new EventEmitter<Actor>();
   @Output() nuevoActor: EventEmitter<void> = new EventEmitter<void>();
+  firestore: any;
+
+  // nuevoActorVisible: boolean = false;
 
   constructor(private firestoreService: FirestoreService, private router: Router) {}
 
@@ -81,7 +87,20 @@ export class ActorsComponent implements OnInit {
       foto: ''
     };
     this.firestoreService.addActor('actors', nuevoActor).then((docRef) => {
+<<<<<<< Updated upstream
       this.editarActor.emit(docRef.id);
+=======
+      this.nuevoActor.emit(); // emitir evento nuevoActor
+      this.router.navigate(['/edit-actor', docRef.id]); // navegar a la edición del nuevo actor
+      // this.nuevoActorVisible = false;
+>>>>>>> Stashed changes
     });
   }
+  // abrirNuevoActor() {
+  //   this.nuevoActorVisible = true;
+  // }
+  // cerrarNuevoActor() {
+  //   this.nuevoActorVisible = false;
+  // }
+
 }

@@ -43,6 +43,12 @@
             <div class="activo-actor field">
               <strong> Años en activo: </strong> <input [(ngModel)]="actorEditado.activo" type="text" />
             </div>
+            <div class="video-actor field">
+              <strong> Video: </strong> <input [(ngModel)]="actorEditado.video" type="text" />
+            </div>
+            <div class="foto-actor field">
+              <strong> Foto: </strong> <input [(ngModel)]="actorEditado.foto" type="text" />
+            </div>
             <i class="bi bi-check-square-fill aceptar" (click)="guardarCambios()"></i>
             <i class="bi-x-square-fill cancelar" (click)="cancelarEdicion()"></i>
           </ng-container>
