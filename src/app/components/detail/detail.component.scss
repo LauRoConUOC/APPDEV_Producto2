@@ -93,20 +93,15 @@ i:hover {
     cursor:pointer;
 }
 
-@media (max-width: 657px) and (min-width: 559px) {
-    .detail {
-        width: 500px;
-    }
-}
-
-@media (max-width: 559px) and (min-width: 400px) {
+@media (max-width: 657px) {
     .detail {
         width: 400px;
     }
+    .aceptar {
+        display: block;
+    }
+
 }
 
-@media (max-width: 399px) {
-    .detail {
-        width: 250px;
-    }
-}
+
+
