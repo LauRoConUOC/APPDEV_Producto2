@@ -82,11 +82,15 @@
 }
 
 @media (max-width: 399px) {
+    
+   
     .imagen-nesflis img {
-        width: 200px;
+        width: 300px;
+        
+    }
+    .imagen-nesflis{
+        margin-bottom: 5em;
     }
 
-    .video-card video {
-        width: 250px;
-    }
+    
 }
